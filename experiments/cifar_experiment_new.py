@@ -119,6 +119,7 @@ def run_experiment(sample_idx, samples, labels, class_names, output_dir):
     # Create experiment directory - use category name and sample index
     class_name = f"{class_names[0]}_{sample_idx}"  # class_names[0] is the category name
     experiment_dir = os.path.join(output_dir, f"experiment_{class_name}_robustness")
+    experiment_dir_old = os.path.join("../results", f"experiment_{class_name}_robustness")
     os.makedirs(experiment_dir, exist_ok=True)
 
     # Process image
@@ -138,7 +139,7 @@ def run_experiment(sample_idx, samples, labels, class_names, output_dir):
             hidden_dim=HIDDEN_DIM, 
             dropout=DROPOUT, 
             device=DEVICE)
-    model_mix.load_state_dict(torch.load(os.path.join(experiment_dir, 'mixture_model.pt')))
+    model_mix.load_state_dict(torch.load(os.path.join(experiment_dir_old, 'mixture_model.pt')))
 
     model_gmix = MixtureNCANoise(update_nets=standard_update_net, 
                 state_dim=N_CHANNELS, 
@@ -146,7 +147,7 @@ def run_experiment(sample_idx, samples, labels, class_names, output_dir):
                 hidden_dim=HIDDEN_DIM, 
                 dropout=DROPOUT, 
                 device=DEVICE)
-    model_gmix.load_state_dict(torch.load(os.path.join(experiment_dir, 'mixture_model_noise.pt')))
+    model_gmix.load_state_dict(torch.load(os.path.join(experiment_dir_old, 'mixture_model_noise.pt')))
 
     # Train models
     print(f"Training models for class: {class_name}")

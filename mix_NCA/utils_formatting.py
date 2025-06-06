@@ -352,9 +352,9 @@ def create_latex_table_cifar(df):
         min_values = category_data.apply(lambda x: float(x.str.split('±').str[0].astype(float).min()))
         
         # Process each model in the category
-        for model_type in ['Standard', 'Mixture', 'Stochastic']:
+        for model_type in ['Standard','GCA', 'Mixture', 'Stochastic']:
             if model_type in category_data.index:
-                line = [model_type.replace('Standard', 'NCA').replace('Mixture', 'MNCA').replace('Stochastic', 'MNCA w/ N')]
+                line = [model_type.replace('Standard', 'NCA').replace('GCA', 'GCA').replace('Mixture', 'MNCA').replace('Stochastic', 'MNCA w/ N')]
                 
                 # Add each metric
                 for col in df.columns:

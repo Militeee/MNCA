@@ -242,7 +242,7 @@ def plot_emoji(tensor):
     plt.axis('off')
     plt.show()
 
-def load_model(model_path, model_class, device="cuda", n_channels=16, n_rules=6):
+def load_model(model_path, model_class, device="cuda", n_channels=16, n_rules=6, hidden_dim=128, dropout=0.2):
     """
     Load a saved model from path
     """
@@ -251,8 +251,8 @@ def load_model(model_path, model_class, device="cuda", n_channels=16, n_rules=6)
 
     DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     N_CHANNELS = n_channels  
-    DROPOUT = 0.2
-    HIDDEN_DIM = 128
+    DROPOUT = dropout
+    HIDDEN_DIM = hidden_dim
     N_RULES = n_rules
       # Initialize models
     if model_class == NCA:

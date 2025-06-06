@@ -519,15 +519,15 @@ def create_simple_model_example(n_stems):
     # Adjust death rates to be lower to account for survival
     model.death_rates = {
         ComplexCellType.STEM: 0.05,
-        ComplexCellType.INTERMEDIATE_1: 0.05,
-        ComplexCellType.INTERMEDIATE_2: 0.05,
-        ComplexCellType.DIFFERENTIATED_1: 0.05,
-        ComplexCellType.DIFFERENTIATED_2: 0.05
+        ComplexCellType.INTERMEDIATE_1: 0.0,
+        ComplexCellType.INTERMEDIATE_2: 0.0,
+        ComplexCellType.DIFFERENTIATED_1: 0.0,
+        ComplexCellType.DIFFERENTIATED_2: 0.0
     }
     
     # Set survival rates
     model.survival_rates = {
-        ComplexCellType.STEM: 0.5,
+        ComplexCellType.STEM: 1,
         ComplexCellType.INTERMEDIATE_1: 0.,
         ComplexCellType.INTERMEDIATE_2: 0.01,
         ComplexCellType.DIFFERENTIATED_1: 1,
@@ -537,10 +537,10 @@ def create_simple_model_example(n_stems):
     # Base differentiation probabilities
     model.base_differentiation = np.array([
         #STEM  INT1  INT2  DIFF  DIFF2
-        [0.0,  0.0,  0.0,  0.3,  0.0],    # STEM -> mostly self-renewal
+        [0.0,  0.0,  0.0,  0.1,  0.0],    # STEM -> mostly self-renewal
         [0.0, 0.0,  0.0,  0.0,  0.0],    # INT1 -> small back to STEM, mostly to INT2
         [0.0,  0.0,  0.0,  0.0,  0.0],    # INT2 -> small self-renewal, go to DIFF
-        [0.0,  0.0,  0.0,  1.0,  0.0],    # DIFF -> stays DIFF
+        [0.0,  0.0,  0.0,  1.0,  0.],    # DIFF -> stays DIFF
         [0.0,  0.0,  0.0,  0.0,  0.0]     # DIFF2 -> stays DIFF2
     ])
     
