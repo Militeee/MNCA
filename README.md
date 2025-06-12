@@ -34,11 +34,13 @@ The project implements several variants of Neural Cellular Automata:
 ├── experiments/          # Experiment scripts for emoji experiments
 |   ├── emoji_experiment.py # Experiment script for the emoji experiment
 |   ├── cifar_experiment.py # Experiment script for the CIFAR-10 experiment
+|   ├── emoji_experiment_new.py # Experiment script for the CIFAR-10 experiment for GCA
+|   ├── cifar_experiment_new.py # Experiment script for the CIFAR-10 experiment for GCA
 |   
 ├── notebooks/           # Jupyter notebooks for analysis of biological simuations and Visium
 |   ├── tissue_simulation_MNCA.ipynb # Notebook for the tissue simulation with the mixture NCA
 |   ├── tissue_simulation_other_models.ipynb # Notebook for the tissue simulation with the ABC models
-|   ├── visium_mouse_analysis.ipynb # Notebook for the pre-processing and analysis of the Visium mouse data
+|   ├── experiment_microscopy.ipynb # Notebook for to perform the microscopy experiment
 |   ├── final_stats.ipynb # Notebook to generate the latex table with the final statistics
 |   ├── lip_stability_analysis.ipynb # Notebook for the analysis of the Lipschitz upper bound and attractors after perturbation
 |   ├── plots_paper.ipynb # Extra notebook to generate some of the plots in the paper
@@ -94,8 +96,6 @@ The repository includes several experiments:
 - Biological simulations
 - Robustness analysis
 - Pattern formation studies
-
-Results and trained models can be found in the `results/` for image morphogenesis and `models/` for the other models.
 
 ## Documentation
 
